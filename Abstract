@@ -1,0 +1,6 @@
+Agriculture is an important part of the economy, and choosing the right crop for a location can help farmers increase productivity and profit. 
+Many farmers still depend on traditional methods or guesswork, which may not always give the best results. This project aims to develop a Crop Recommendation System using a simple machine learning approach. 
+The system takes important parameters such as Nitrogen (N), Phosphorus (P), Potassium (K), temperature, humidity, pH, and rainfall as input.
+Using a Decision Tree Classifier, the model is trained on a dataset to learn the relationship between these parameters and the most suitable crop. After training, the system can predict the best crop for given conditions.
+The goal is to make a simple and easy-to-use tool for farmers that provides quick and accurate crop suggestions. 
+This project will help farmers make informed decisions, improve crop yield, and support better resource management in agriculture.
