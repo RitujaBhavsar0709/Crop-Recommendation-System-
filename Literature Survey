@@ -1,1 +1,20 @@
 
+Existing Research
+Machine Learning (DT, NB, SVM, LR, RF, XGBoost) used for crop recommendation.
+RF & XGBoost often gave highest accuracy.
+IoT + ML systems monitored soil nutrients (NPK, pH, temp, humidity).
+CNN applied for plant disease detection (image-based).
+Yield prediction explored using historical soil & weather data.
+Drawbacks Identified
+Focus only on suitability, not profitability.
+Limited attributes (ignored mandi price & yield/ha).
+Many solutions stop at prediction (no economic guidance).
+High cost of IoT sensors, lack of simple farmer tools.
+Our Contribution
+RF-based crop recommendation with high accuracy.
+Integration of mandi price data + yield/ha.
+Suggests Top 3 crops ranked by profitability.
+Visualization with bar charts for easy decision-ming.
+
+
+
