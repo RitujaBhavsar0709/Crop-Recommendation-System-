@@ -1,0 +1,79 @@
+1. System Modules Implemented
+
+a. Data Pre-processing Module
+Collected soil parameters: Nitrogen (N), Phosphorus (P), Potassium (K), pH, Temperature, Humidity, Rainfall.
+Removed missing values, duplicates, and outliers using statistical filtering.
+Scaled and normalized the features for consistent model performance.
+Generated a clean dataset for model training and testing.
+
+b. Machine Learning Model (Random Forest Classifier)
+Implemented Random Forest due to:
+High accuracy
+Ability to handle nonlinear agricultural data
+Resistance to overfitting
+
+Trained the model using the preprocessed dataset (80% training, 20% testing).
+Performed hyperparameter tuning:
+Number of trees (n_estimators)
+Max depth
+Min samples split
+Achieved improved prediction accuracy for crop recommendations.
+
+c. Market Price Analysis Module
+Integrated real-time/recorded market price data for major crops.
+Performed:
+Trend analysis
+Seasonal price variation study
+Average price and profit estimation
+Linked price insights with crop recommendations so farmers get both:
+Technically suitable crops
+Economically profitable choices
+
+d. Crop Recommendation Engine
+Combined soil data + environmental factors + market price trends.
+Generated top 3 suitable crops with:
+Suitability score (from Random Forest)
+Expected market value or profit score
+Ensured final recommendations maximize revenue and productivity.
+
+2. Platform Development / System Integration
+
+a. Backend Implementation
+Developed backend in Python (Flask/Django).
+Loaded trained Random Forest model (.pkl).
+Implemented APIs for:
+Predicting best crops
+Fetching market price analytics
+Displaying comparison graphs
+
+b. Frontend Implementation
+User-friendly interface for farmers to input:
+N, P, K values
+pH, rainfall, humidity
+Dashboard for showing results:
+Recommended crops
+Market price trend charts
+Soil condition report
+
+c. Database Setup
+Stored:
+User soil test history
+Market price logs
+Prediction results
+Database: CSV
+
+3. Testing Phase
+Conducted:
+Unit testing on model prediction APIs
+Integration testing between ML + Market Price module
+Real-time data testing using actual soil sample values
+Validated accuracy with manual agricultural expert opinions.
+
+4. Outcome of Implementation Phase–II
+Successfully deployed a Smart Crop Recommendation System.
+Provides both scientific crop prediction and market profit guidance.
+Improves decision-making for farmers based on:
+Soil suitability
+Weather conditions
+Market demand and price trends
+Achieved high model accuracy and reliable recommendations.
