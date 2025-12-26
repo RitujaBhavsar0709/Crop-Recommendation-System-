@@ -68,3 +68,166 @@ Improves soil and resource management
 Helps adapt to climate change
 Increases crop yield and farmer income
 
+Chapter2 - Literature survey
+
+Date- 01/09/25 to 13/09/25
+
+2.1 Background
+Agriculture mainly depends on factors like soil type, rainfall, temperature, and climate. 
+Traditionally, farmers selected crops based on experience, which sometimes led to low yield 
+and crop failure. With changes in climate and increasing food demand, this method became 
+insufficient.The Crop Recommendation System was developed using data analysis and machine 
+learning to help farmers choose the most suitable crop for their land. It uses information about soil 
+nutrients, weather conditions, and location** to provide accurate crop suggestions, improving productivity
+and sustainability.
+
+2.2 Existing Systems
+
+* Traditional farming based on farmer experience
+* Manual soil testing laboratories
+* Rule-based agricultural advisory systems
+* Basic agricultural mobile applications
+* Limited AI/ML-based crop recommendation tools
+
+2.3 Limitations of Existing System
+
+Depend on traditional knowledge and guesswork
+Limited use of real-time weather data
+Not fully accurate or adaptive
+Manual soil testing is time-consuming
+Rule-based systems are rigid
+Limited availability to small farmers
+
+Chapter 3 - Methodology
+
+Date - 15/09/25 to 27/09/25
+
+3.1 Hardware Requirements
+Computer / Laptop
+Processor: Intel i3 or higher
+RAM: Minimum 4 GB
+Hard Disk: 20 GB or more
+Internet Connection
+Optional: Soil and weather sensors
+
+Software Requirements
+Operating System: Windows / Linux
+Programming Language: Python
+Development Environment: Jupyter Notebook / PyCharm
+Libraries: NumPy, Pandas, Scikit-learn
+Database: MySQL / SQLite
+Web Framework (optional): Flask
+
+3.4 Data Flow
+Incomplete or missing soil data
+Inaccurate weather information
+Outdated agricultural datasets
+Data inconsistency from different sources
+Limited region-specific data
+Noise and errors in collected data
+
+3.5 dataset used
+dataset used - 
+
+
+3.6 Exploratory Data Analysis
+Exploratory Data Analysis is the process of understanding and analyzing data before building a model.
+It is used to find patterns, trends, missing values, and errors in the dataset.
+In Crop Recommendation System, EDA helps to:
+Understand soil and weather data
+Identify missing or incorrect values
+Analyze relationships between crops and soil nutrients
+Visualize data using graphs and charts
+
+3.7 Algorithms
+
+
+
+Chapter 4- Implementation details
+Date- 29/09/2025 to 18/10/25
+### **Modules of Crop Recommendation System**
+
+1. Data Collection Module
+   Collects soil data, weather data, and crop details.
+2. Data Preprocessing Module
+   Cleans data by removing errors, handling missing values, and normalizing data.
+3. Exploratory Data Analysis Module
+   Analyzes and visualizes data to understand patterns and relationships.
+4. Model Training Module
+   Applies machine learning algorithms to train the crop prediction model.
+5. Crop Recommendation Module
+   Predicts and recommends the most suitable crop for given inputs.
+6. Result Display Module
+   Shows the recommended crop and related information to the user.
+Chapter 5 - Results
+Date- 27/10/25 to 04/11/25
+
+5.1 Results
+The Crop Recommendation System successfully predicts the most suitable crop
+based on soil nutrients and weather conditions.
+It helps farmers make accurate crop selection, 
+reduces crop failure, and improves yield and productivity.
+The system provides quick and reliable recommendations,
+supporting smart and sustainable agriculture.
+
+5.2 Performance Metrics
+### **Performance Metrics of Crop Recommendation System**
+
+To evaluate how well the system predicts the suitable crop, the following metrics are used:
+
+1. Accuracy
+   Measures the percentage of correct crop predictions out of total predictions.
+
+2. Precision
+   Indicates how many of the recommended crops were actually suitable.
+
+3. Recall (Sensitivity)
+   Measures how many suitable crops were correctly identified by the system.
+
+4. F1-Score
+   Combines precision and recall to give a single performance score.
+
+5. Confusion Matrix
+   Shows correct and incorrect predictions for each crop class.
+
+6. Mean Absolute Error 
+   Measures the average difference between predicted and actual crop suitability scores.
+
+5.3 Model Evaluation
+Split data into training and testing sets
+
+Train the model using algorithms like Decision Tree or Random Forest
+
+Predict crops on testing data
+
+Compare predictions with actual crops
+
+Check accuracy, precision, recall, F1-score
+
+Select the best-performing model
+
+Chapter 6 - Conclusion
+
+The Crop Recommendation System helps farmers choose the right crop based on soil, 
+weather, and other environmental factors. It improves crop yield, reduces losses, and supports 
+sustainable farming. By using data analysis and machine learning, the system provides accurate, 
+fast, and reliable recommendations, making farming more efficient and profitable.
+
+Chapter - 7 References
+Patil, S., & Patil, D. (2018). Crop Recommendation System Using Data Mining Techniques.
+International Journal of Advanced Research in Computer Science, 9(5), 12-16.
+
+Kaur, R., & Kaur, S. (2019). Smart Agriculture: Crop Recommendation System Using Machine Learning.
+International Journal of Computer Applications, 178(21), 20-25.
+
+Khatri, S., & Kaur, M. (2020). Machine Learning Based Crop Prediction System.
+International Journal of Engineering Research & Technology (IJERT), 9(4), 101-106.
+
+
+
+
+
+
+
+
+
