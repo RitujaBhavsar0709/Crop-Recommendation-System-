@@ -1,7 +1,7 @@
 The main goal of Module 1 is to collect, clean, and prepare the dataset for machine learning model training.
 It ensures that the input data (soil and climate parameters) is accurate, complete, and ready for analysis.
 
-🧩 Submodules and Tasks
+Submodules and Tasks
 1.1 Data Collection
 
 Source:
@@ -100,11 +100,11 @@ X_train, X_test, y_train, y_test = train_test_split(
     X_scaled, y, test_size=0.2, random_state=42
 )
 
-⚙️ Output of Module 1
+ Output of Module 1
 
 After completing this module, you’ll have:
 
-✅ Cleaned and processed dataset
-✅ Features and target variable separated
-✅ Scaled data ready for model training
-✅ Training and testing sets created
+ Cleaned and processed dataset
+ Features and target variable separated
+ Scaled data ready for model training
+ Training and testing sets created
