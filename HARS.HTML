@@ -1,0 +1,702 @@
+//Other Styling 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Recommendation System | Dashboard</title>
+
+    <!-- Font Awesome for sidebar icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* =============== ROOT THEME COLORS =============== */
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #2E7D32;
+            --light-bg: #E9F5E9;
+            --soil: #8D6E63;
+            --text-dark: #2C3E50;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", sans-serif; }
+
+        body {
+            background: #f4f6f0;
+            color: var(--text-dark);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Page fade wrapper */
+        .page-fade {
+            animation: fadeIn 0.6s ease both;
+            width: 100%;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-out {
+            animation: fadeOut 0.45s ease both;
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to   { opacity: 0; transform: translateY(6px); }
+        }
+
+        /* =============== SIDEBAR =============== */
+        .sidebar {
+            width: 240px;
+            background: var(--primary-dark);
+            color: white;
+            min-height: 100vh;
+            padding: 25px 18px;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 22px;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.4px;
+        }
+
+        .menu-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.25s, transform 0.12s;
+            font-size: 15px;
+            color: #fff;
+        }
+
+        .menu-item i { width: 20px; text-align: center; opacity: 0.95; }
+
+        .menu-item:hover { background: rgba(255,255,255,0.06); transform: translateX(4px); }
+        .menu-item.active { background: var(--primary); color: #fff; }
+
+        /* =============== TOP NAVBAR =============== */
+        .navbar {
+            width: 100%;
+            background: var(--white);
+            padding: 14px 25px;
+            position: fixed;
+            left: 240px;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .navbar h1 { font-size: 20px; color: var(--primary-dark); font-weight: 700; }
+        .navbar .nav-right { display:flex; gap:12px; align-items:center; color:#556b4a; }
+
+        /* =============== MAIN CONTENT =============== */
+        .main-content {
+            margin-left: 260px;
+            padding: 100px 40px 40px;
+            width: calc(100% - 260px);
+        }
+
+        /* =============== CARD =============== */
+        .card {
+            background: var(--white);
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 26px;
+            box-shadow: 0 6px 20px rgba(24,36,12,0.06);
+        }
+
+        .card h2 { color: var(--primary-dark); margin-bottom: 14px; font-size: 18px; }
+
+        /* =============== FORM =============== */
+        label { display: block; font-weight: 600; margin-bottom: 6px; color: #3d4d33; }
+
+        input, select {
+            width: 100%;
+            padding: 11px 12px;
+            border-radius: 8px;
+            margin-bottom: 13px;
+            border: 1px solid #c8d5c0;
+            background: #f9fff5;
+            transition: 0.22s;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 6px rgba(76,175,80,0.18);
+            outline: none;
+        }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+        /* =============== BUTTON =============== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-dark);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: background 0.22s, transform 0.08s;
+        }
+        .btn:hover { background: var(--primary); transform: translateY(-1px); }
+
+        /* small button icon */
+        .btn .fa-seedling { color: #dff6e1; }
+
+        /* =============== RESULTS =============== */
+        .result-list li {
+            background: var(--light-bg);
+            padding: 12px 14px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .chart-box img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+
+        /* =============== LOADER OVERLAY =============== */
+        #loaderOverlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.82);
+            display: none;              /* shown by JS */
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .loader {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 7px solid rgba(120,160,90,0.18);
+            border-top-color: var(--primary-dark);
+            animation: spin 0.9s linear infinite;
+            box-shadow: 0 6px 20px rgba(46,125,50,0.12);
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* small loader text */
+        #loaderText {
+            margin-top: 14px;
+            font-weight: 600;
+            color: #42593a;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 920px) {
+            .sidebar { width: 64px; padding: 18px 10px; }
+            .sidebar h2 { display: none; }
+            .navbar { left: 64px; padding-left: 18px; }
+            .main-content { margin-left: 84px; padding: 88px 18px 28px; width: calc(100% - 84px); }
+            .menu-item { justify-content: center; }
+        }
+        @media (max-width: 640px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .navbar h1 { font-size: 16px; }
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- LOADER OVERLAY (hidden by default; shown when predicting) -->
+    <div id="loaderOverlay" aria-hidden="true">
+        <div style="text-align:center;">
+            <div class="loader" role="status" aria-label="Loading"></div>
+            <div id="loaderText">Predicting best crops — please wait…</div>
+        </div>
+    </div>
+
+    <div class="page-fade">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar" role="navigation" aria-label="Main sidebar">
+            <h2>🌾 Crop Dashboard</h2>
+
+            <div class="menu-item active" title="Dashboard">
+                <i class="fa-solid fa-chart-line"></i>
+                <span class="menu-label">Dashboard</span>
+            </div>
+
+            <div class="menu-item" title="Predict">
+                <i class="fa-solid fa-seedling"></i>
+                <span class="menu-label">Predict Crop</span>
+            </div>
+
+            <div class="menu-item" title="Analytics">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span class="menu-label">Analytics</span>
+            </div>
+
+            <div class="menu-item" title="About">
+                <i class="fa-solid fa-circle-info"></i>
+                <span class="menu-label">About Project</span>
+            </div>
+        </div>
+
+        <!-- NAVBAR -->
+        <div class="navbar" role="banner">
+            <h1>Smart Crop Recommendation System</h1>
+            <div class="nav-right">
+                <div style="opacity:0.85; font-weight:600;"><i class="fa-regular fa-user"></i> Admin</div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content" role="main">
+
+            <!-- INPUT CARD -->
+            <section class="card" aria-labelledby="input-heading">
+                <h2 id="input-heading">Input Farm Details</h2>
+
+                <form method="POST" id="predictForm" novalidate>
+
+                    <label>State</label>
+                    <select name="state" onchange="this.form.submit()">
+                        {% for s in states %}
+                        <option value="{{ s }}" {% if s==selected_state %}selected{% endif %}>{{ s }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label>District</label>
+                    <select name="district" onchange="this.form.submit()">
+                        {% for d in districts %}
+                        <option value="{{ d }}" {% if d==selected_district %}selected{% endif %}>{{ d }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label>Taluka</label>
+                    <select name="taluka" onchange="this.form.submit()">
+                        {% for t in talukas %}
+                        <option value="{{ t }}" {% if t==selected_taluka %}selected{% endif %}>{{ t }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label>Season</label>
+                    <select name="season">
+                        {% for s in seasons %}
+                        <option value="{{ s }}" {% if s==selected_season %}selected{% endif %}>{{ s }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <div class="grid-2" style="margin-top:6px;">
+                        <div>
+                            <label>N</label>
+                            <input name="N" value="{{ defaults['N'] }}">
+                        </div>
+                        <div>
+                            <label>P</label>
+                            <input name="P" value="{{ defaults['P'] }}">
+                        </div>
+                        <div>
+                            <label>K</label>
+                            <input name="K" value="{{ defaults['K'] }}">
+                        </div>
+                        <div>
+                            <label>Temperature (°C)</label>
+                            <input name="temperature" value="{{ defaults['temperature'] }}">
+                        </div>
+                        <div>
+                            <label>Humidity (%)</label>
+                            <input name="humidity" value="{{ defaults['humidity'] }}">
+                        </div>
+                        <div>
+                            <label>pH</label>
+                            <input name="ph" value="{{ defaults['ph'] }}">
+                        </div>
+                        <div>
+                            <label>Rainfall (mm)</label>
+                            <input name="rainfall" value="{{ defaults['rainfall'] }}">
+                        </div>
+                        <div>
+                            <label>Farm Size (hectares)</label>
+                            <input name="farm_size" placeholder="1">
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="action" value="predict">
+                    <button class="btn" type="submit">
+                        <i class="fa-solid fa-seedling"></i> Predict Best Crops
+                    </button>
+                </form>
+            </section>
+
+            <!-- RESULT CARD -->
+            {% if recommended %}
+            <section class="card" aria-labelledby="result-heading">
+                <h2 id="result-heading">Recommended Crops</h2>
+
+                <ul class="result-list" aria-live="polite">
+                    {% for c in recommended %}
+                    <li>{{ c }}</li>
+                    {% endfor %}
+                </ul>
+
+                <h2>Profit Projection</h2>
+                <ul class="result-list">
+                    {% for crop, profit, pct in profit_list %}
+                    <li><strong>{{ crop }}</strong>: ₹{{ "{:,.2f}".format(profit) }} ({{ pct }}%)</li>
+                    {% endfor %}
+                </ul>
+
+                {% if plot_data %}
+                <div class="chart-box">
+                    <h3>Profit Comparison Chart</h3>
+                    <img src="data:image/png;base64,{{ plot_data }}" alt="Profit comparison chart">
+                </div>
+                {% endif %}
+            </section>
+            {% endif %}
+
+        </main>
+
+    </div> <!-- /.page-fade -->
+
+    <!-- =============== JS: loader + simple transitions =============== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // page has loaded with fade-in (CSS handles it)
+
+            // show loader overlay when prediction form is submitted
+            const form = document.getElementById("predictForm");
+            const loader = document.getElementById("loaderOverlay");
+
+            if(form){
+                form.addEventListener("submit", function (e) {
+                    // If the submit is from dropdown change (state/district/taluka) the page will reload.
+                    // We show the loader only when action === "predict".
+                    const actionInput = form.querySelector("input[name='action']");
+                    if (actionInput && actionInput.value === "predict") {
+                        // show loader
+                        loader.style.display = "flex";
+
+                        // Accessibility: set aria-hidden
+                        loader.setAttribute("aria-hidden", "false");
+                        // allow form to submit normally
+                    }
+                });
+            }
+
+            // Small enhancement: clicking sidebar items adds active class (front-end only)
+            document.querySelectorAll('.sidebar .menu-item').forEach(function(item){
+                item.addEventListener('click', function(){
+                    document.querySelectorAll('.sidebar .menu-item').forEach(i=>i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+
+        // OPTIONAL: if you want to animate out before navigation (not used for form POST)
+        function animateOutAndGo(url){
+            document.querySelector('.page-fade').classList.add('fade-out');
+            setTimeout(function(){ window.location = url; }, 380);
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="container">
+
+    <h1>🌱 Crop Recommendation System</h1>
+
+    <form method="POST">
+
+        <!-- Region Selector -->
+        <label>Region:</label>
+        <select name="region" onchange="this.form.submit()" required>
+            {% for r in regions %}
+            <option value="{{ r }}" {% if r == selected_region %}selected{% endif %}>{{ r }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <!-- Season Selector -->
+        <label>Season:</label>
+        <select name="season" onchange="this.form.submit()" required>
+            {% for s in seasons %}
+            <option value="{{ s }}" {% if s == selected_season %}selected{% endif %}>{{ s }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Nitrogen (N):</label>
+        <input type="text" name="N" value="{{ defaults['N'] }}"><br><br>
+
+        <label>Phosphorus (P):</label>
+        <input type="text" name="P" value="{{ defaults['P'] }}"><br><br>
+
+        <label>Potassium (K):</label>
+        <input type="text" name="K" value="{{ defaults['K'] }}"><br><br>
+
+        <label>Temperature (°C):</label>
+        <input type="text" name="temperature" value="{{ defaults['temperature'] }}"><br><br>
+
+        <label>Humidity (%):</label>
+        <input type="text" name="humidity" value="{{ defaults['humidity'] }}"><br><br>
+
+        <label>Soil pH:</label>
+        <input type="text" name="ph" value="{{ defaults['ph'] }}"><br><br>
+
+        <label>Rainfall (mm):</label>
+        <input type="text" name="rainfall" value="{{ defaults['rainfall'] }}"><br><br>
+
+        <label>Farm Size (hectares):</label>
+        <input type="text" name="farm_size" placeholder="Enter farm size" required><br><br>
+
+        <input type="submit" value="Predict Crops">
+    </form>
+
+    {% if recommended %}
+        <h2>🌱 Recommended Crops:</h2>
+        <ul>
+            {% for crop in recommended %}
+                <li>{{ crop }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>💰 Profit Analysis:</h2>
+        <ul>
+            {% for crop, profit, percent in profit_list %}
+            <li>
+                <b>{{ crop }}</b> — 
+                Profit: ₹{{ "{:,.2f}".format(profit) }} 
+                ({{ percent }}%)
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2>🌟 Best Crop Choice: {{ best_crop }}</h2>
+    {% endif %}
+
+    {% if plot_data %}
+        <h3>📊 Profit Comparison Chart</h3>
+        <img src="data:image/png;base64,{{ plot_data }}" alt="Profit Chart">
+    {% endif %}
+
+</div>
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// styling before 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <h1>🌾 Smart Crop Recommendation</h1>
+        <p class="subtitle">State → District → Taluka Based Farming Guidance</p>
+    </header>
+
+    <!-- ============================
+          INPUT FORM
+    ============================ -->
+    <div class="card">
+        <h2 class="section-title">Farm Input Details</h2>
+
+        <form method="POST" class="form-box">
+
+            <div class="form-group">
+                <label>State</label>
+                <select name="state" onchange="this.form.submit()">
+                    {% for s in states %}
+                        <option value="{{ s }}" {% if s==selected_state %}selected{% endif %}>{{ s }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>District</label>
+                <select name="district" onchange="this.form.submit()">
+                    {% for d in districts %}
+                        <option value="{{ d }}" {% if d==selected_district %}selected{% endif %}>{{ d }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Taluka</label>
+                <select name="taluka" onchange="this.form.submit()">
+                    {% for t in talukas %}
+                        <option value="{{ t }}" {% if t==selected_taluka %}selected{% endif %}>{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Season</label>
+                <select name="season">
+                    {% for s in seasons %}
+                        <option value="{{ s }}" {% if s==selected_season %}selected{% endif %}>{{ s }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <hr class="divider">
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>N (Nitrogen)</label>
+                    <input name="N" value="{{ defaults['N'] }}">
+                </div>
+
+                <div class="form-group">
+                    <label>P (Phosphorus)</label>
+                    <input name="P" value="{{ defaults['P'] }}">
+                </div>
+
+                <div class="form-group">
+                    <label>K (Potassium)</label>
+                    <input name="K" value="{{ defaults['K'] }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Temperature (°C)</label>
+                    <input name="temperature" value="{{ defaults['temperature'] }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Humidity (%)</label>
+                    <input name="humidity" value="{{ defaults['humidity'] }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Soil pH</label>
+                    <input name="ph" value="{{ defaults['ph'] }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Rainfall (mm)</label>
+                    <input name="rainfall" value="{{ defaults['rainfall'] }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Farm Size (hectares)</label>
+                    <input name="farm_size" placeholder="1">
+                </div>
+            </div>
+
+            <input type="hidden" name="action" value="predict">
+
+            <button type="submit" class="btn-submit">
+                🌱 Predict Best Crops
+            </button>
+        </form>
+    </div>
+
+    <!-- ============================
+          RESULT SECTION
+    ============================ -->
+    {% if recommended %}
+    <div class="card result-card">
+        <h2 class="section-title">Recommended Crops 🌾</h2>
+
+        <ul class="crop-list">
+            {% for c in recommended %}
+                <li>{{ c }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3 class="section-title">Profit Projection (₹)</h3>
+        <ul class="profit-list">
+            {% for crop, profit, pct in profit_list %}
+                <li>
+                    <strong>{{ crop }}</strong> — ₹{{ "{:,.2f}".format(profit) }}
+                    <span class="pct">({{ pct }}%)</span>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% if plot_data %}
+        <div class="chart-box">
+            <h3>Profit Comparison Chart</h3>
+            <img src="data:image/png;base64,{{ plot_data }}">
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

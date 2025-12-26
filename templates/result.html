@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Recommendation Result</title>
+</head>
+<body>
+    <h1>🌾 Recommended Crops for {{ region }}</h1>
+    <h3>Farm Size: {{ farm_size }} hectares</h3>
+
+    <h2>💰 Profit Analysis:</h2>
+    <ul>
+    {% for crop, profit in profit_list %}
+        <li>{{ crop }}: ₹{{ "{:,.2f}".format(profit) }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>🌟 Best Crop Choice: {{ best_crop }}</h2>
+
+    <h2>📊 Profit Comparison Chart:</h2>
+    <img src="{{ url_for('static', filename='profit_chart.png') }}" width="500">
+
+    <br><br>
+    <a href="/">🔄 Try Again</a>
+</body>
+</html>

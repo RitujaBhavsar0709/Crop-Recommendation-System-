@@ -1,0 +1,72 @@
+region,season,N,P,K,temperature,humidity,ph,rainfall
+Maharashtra,Kharif,90,42,43,28,60,6.5,850
+Maharashtra,Rabi,85,40,40,22,50,6.6,350
+Maharashtra,Summer,80,38,38,33,55,6.5,150
+
+Punjab,Kharif,95,40,38,30,65,7.0,700
+Punjab,Rabi,120,45,40,25,70,7.0,600
+Punjab,Summer,90,38,35,34,60,7.1,200
+
+Tamil Nadu,Kharif,88,40,42,30,78,6.8,900
+Tamil Nadu,Rabi,80,38,39,25,70,6.9,500
+Tamil Nadu,Summer,85,38,40,31,75,6.8,950
+
+Karnataka,Kharif,95,40,42,29,65,6.6,800
+Karnataka,Rabi,88,38,40,24,60,6.7,450
+Karnataka,Summer,82,36,38,33,68,6.6,300
+
+Uttar Pradesh,Kharif,100,44,40,29,70,7.2,780
+Uttar Pradesh,Rabi,110,44,41,26,68,7.2,700
+Uttar Pradesh,Summer,95,40,38,34,65,7.1,250
+
+Gujarat,Kharif,88,39,38,30,55,6.4,720
+Gujarat,Rabi,92,40,39,24,50,6.5,350
+Gujarat,Summer,85,38,37,34,45,6.4,180
+
+Rajasthan,Kharif,90,42,38,32,50,7.1,600
+Rajasthan,Rabi,115,48,39,24,60,7.1,650
+Rajasthan,Summer,85,38,36,36,40,7.0,150
+
+Madhya Pradesh,Kharif,95,42,41,30,66,6.9,760
+Madhya Pradesh,Rabi,105,46,40,27,66,6.9,690
+Madhya Pradesh,Summer,88,40,38,35,60,6.8,220
+
+Haryana,Kharif,92,40,40,31,65,7.0,720
+Haryana,Rabi,112,43,43,25,69,7.0,680
+Haryana,Summer,90,38,36,36,60,7.0,200
+
+Bihar,Kharif,92,41,41,28,64,6.6,770
+Bihar,Rabi,100,42,40,23,60,6.7,500
+Bihar,Summer,85,38,38,34,58,6.6,180
+
+West Bengal,Kharif,90,39,42,29,70,6.7,820
+West Bengal,Rabi,95,41,40,23,68,6.8,420
+West Bengal,Summer,82,36,37,32,75,6.7,280
+
+Odisha,Kharif,88,37,40,30,75,6.8,880
+Odisha,Rabi,90,38,38,24,68,6.8,550
+Odisha,Summer,82,36,36,34,72,6.7,300
+
+Andhra Pradesh,Kharif,95,40,42,30,70,6.9,780
+Andhra Pradesh,Rabi,100,42,44,26,67,6.9,710
+Andhra Pradesh,Summer,85,38,39,32,73,6.8,350
+
+Telangana,Kharif,94,40,42,28,65,6.7,790
+Telangana,Rabi,98,41,40,25,60,6.8,480
+Telangana,Summer,86,38,37,33,68,6.7,220
+
+Kerala,Kharif,85,38,40,30,85,6.2,450
+Kerala,Rabi,80,36,38,26,80,6.2,200
+Kerala,Summer,82,36,39,32,80,6.2,320
+
+Assam,Kharif,86,39,40,27,78,6.5,1100
+Assam,Rabi,92,40,38,20,75,6.6,700
+Assam,Summer,80,38,37,33,80,6.5,300
+
+Chhattisgarh,Kharif,89,38,41,30,72,6.8,900
+Chhattisgarh,Rabi,95,40,39,24,68,6.8,500
+Chhattisgarh,Summer,82,36,36,34,70,6.7,200
+
+Jharkhand,Kharif,90,40,40,29,68,7.0,750
+Jharkhand,Rabi,108,47,39,25,70,7.0,650
+Jharkhand,Summer,85,38,38,33,65,6.9,210

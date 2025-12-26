@@ -1,0 +1,85 @@
+state,season,N,P,K,temperature,humidity,ph,rainfall
+Andhra Pradesh,Kharif,90,40,40,28,70,6.5,800
+Andhra Pradesh,Rabi,85,38,38,22,55,6.6,300
+Andhra Pradesh,Summer,80,36,36,33,60,6.4,150
+Arunachal Pradesh,Kharif,90,40,40,28,70,6.5,800
+Arunachal Pradesh,Rabi,85,38,38,22,55,6.6,300
+Arunachal Pradesh,Summer,80,36,36,33,60,6.4,150
+Assam,Kharif,90,40,40,28,70,6.5,800
+Assam,Rabi,85,38,38,22,55,6.6,300
+Assam,Summer,80,36,36,33,60,6.4,150
+Bihar,Kharif,90,40,40,28,70,6.5,800
+Bihar,Rabi,85,38,38,22,55,6.6,300
+Bihar,Summer,80,36,36,33,60,6.4,150
+Chhattisgarh,Kharif,90,40,40,28,70,6.5,800
+Chhattisgarh,Rabi,85,38,38,22,55,6.6,300
+Chhattisgarh,Summer,80,36,36,33,60,6.4,150
+Goa,Kharif,90,40,40,28,70,6.5,800
+Goa,Rabi,85,38,38,22,55,6.6,300
+Goa,Summer,80,36,36,33,60,6.4,150
+Gujarat,Kharif,90,40,40,28,70,6.5,800
+Gujarat,Rabi,85,38,38,22,55,6.6,300
+Gujarat,Summer,80,36,36,33,60,6.4,150
+Haryana,Kharif,90,40,40,28,70,6.5,800
+Haryana,Rabi,85,38,38,22,55,6.6,300
+Haryana,Summer,80,36,36,33,60,6.4,150
+Himachal Pradesh,Kharif,90,40,40,28,70,6.5,800
+Himachal Pradesh,Rabi,85,38,38,22,55,6.6,300
+Himachal Pradesh,Summer,80,36,36,33,60,6.4,150
+Jharkhand,Kharif,90,40,40,28,70,6.5,800
+Jharkhand,Rabi,85,38,38,22,55,6.6,300
+Jharkhand,Summer,80,36,36,33,60,6.4,150
+Karnataka,Kharif,90,40,40,28,70,6.5,800
+Karnataka,Rabi,85,38,38,22,55,6.6,300
+Karnataka,Summer,80,36,36,33,60,6.4,150
+Kerala,Kharif,90,40,40,28,70,6.5,800
+Kerala,Rabi,85,38,38,22,55,6.6,300
+Kerala,Summer,80,36,36,33,60,6.4,150
+Madhya Pradesh,Kharif,90,40,40,28,70,6.5,800
+Madhya Pradesh,Rabi,85,38,38,22,55,6.6,300
+Madhya Pradesh,Summer,80,36,36,33,60,6.4,150
+Maharashtra,Kharif,90,40,40,28,70,6.5,800
+Maharashtra,Rabi,85,38,38,22,55,6.6,300
+Maharashtra,Summer,80,36,36,33,60,6.4,150
+Manipur,Kharif,90,40,40,28,70,6.5,800
+Manipur,Rabi,85,38,38,22,55,6.6,300
+Manipur,Summer,80,36,36,33,60,6.4,150
+Meghalaya,Kharif,90,40,40,28,70,6.5,800
+Meghalaya,Rabi,85,38,38,22,55,6.6,300
+Meghalaya,Summer,80,36,36,33,60,6.4,150
+Mizoram,Kharif,90,40,40,28,70,6.5,800
+Mizoram,Rabi,85,38,38,22,55,6.6,300
+Mizoram,Summer,80,36,36,33,60,6.4,150
+Nagaland,Kharif,90,40,40,28,70,6.5,800
+Nagaland,Rabi,85,38,38,22,55,6.6,300
+Nagaland,Summer,80,36,36,33,60,6.4,150
+Odisha,Kharif,90,40,40,28,70,6.5,800
+Odisha,Rabi,85,38,38,22,55,6.6,300
+Odisha,Summer,80,36,36,33,60,6.4,150
+Punjab,Kharif,90,40,40,28,70,6.5,800
+Punjab,Rabi,85,38,38,22,55,6.6,300
+Punjab,Summer,80,36,36,33,60,6.4,150
+Rajasthan,Kharif,90,40,40,28,70,6.5,800
+Rajasthan,Rabi,85,38,38,22,55,6.6,300
+Rajasthan,Summer,80,36,36,33,60,6.4,150
+Sikkim,Kharif,90,40,40,28,70,6.5,800
+Sikkim,Rabi,85,38,38,22,55,6.6,300
+Sikkim,Summer,80,36,36,33,60,6.4,150
+Tamil Nadu,Kharif,90,40,40,28,70,6.5,800
+Tamil Nadu,Rabi,85,38,38,22,55,6.6,300
+Tamil Nadu,Summer,80,36,36,33,60,6.4,150
+Telangana,Kharif,90,40,40,28,70,6.5,800
+Telangana,Rabi,85,38,38,22,55,6.6,300
+Telangana,Summer,80,36,36,33,60,6.4,150
+Tripura,Kharif,90,40,40,28,70,6.5,800
+Tripura,Rabi,85,38,38,22,55,6.6,300
+Tripura,Summer,80,36,36,33,60,6.4,150
+Uttar Pradesh,Kharif,90,40,40,28,70,6.5,800
+Uttar Pradesh,Rabi,85,38,38,22,55,6.6,300
+Uttar Pradesh,Summer,80,36,36,33,60,6.4,150
+Uttarakhand,Kharif,90,40,40,28,70,6.5,800
+Uttarakhand,Rabi,85,38,38,22,55,6.6,300
+Uttarakhand,Summer,80,36,36,33,60,6.4,150
+West Bengal,Kharif,90,40,40,28,70,6.5,800
+West Bengal,Rabi,85,38,38,22,55,6.6,300
+West Bengal,Summer,80,36,36,33,60,6.4,150

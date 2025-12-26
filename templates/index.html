@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Crop Recommendation — District</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{--accent:#4CAF50;--card-bg:rgba(255,255,255,0.04);--muted:rgba(231,247,234,0.7);--text:#e7f7ea}
+body{margin:0;font-family:"Segoe UI",system-ui;background:radial-gradient(1200px 600px at 10% 10%, rgba(76,175,80,0.06), transparent),linear-gradient(180deg,#07110a 0%, #0e1410 100%);color:var(--text);display:flex}
+.sidebar{width:260px;padding:28px 18px;position:fixed;top:22px;bottom:22px;left:22px;background:rgba(255,255,255,0.03);border-radius:20px;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)}
+.container{margin-left:320px;padding:34px;width:calc(100% - 360px)}
+.form-card{background:var(--card-bg);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.08)}
+.result-list li{background:rgba(255,255,255,0.04);padding:10px;border-left:4px solid var(--accent);border-radius:8px;margin-bottom:6px}
+#loaderOverlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);z-index:999}
+.loader{width:60px;height:60px;border:7px solid rgba(255,255,255,0.1);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+label{display:block;margin-top:10px;color:var(--muted)}
+input,select{width:100%;padding:8px;border-radius:8px;border:none;margin-top:6px;background:rgba(255,255,255,0.02);color:var(--text)}
+button{margin-top:14px;padding:12px;width:100%;border:none;border-radius:10px;background:var(--accent);font-size:16px;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loaderOverlay">
+  <div><div class="loader"></div></div>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>🌾 Crop Dashboard</h2>
+  <p style="color:var(--muted);font-size:14px;">District-level mode</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+  <h1>Smart Crop Recommendation (District)</h1>
+
+  <div class="form-card">
+    <form method="POST" id="predictForm">
+
+      <!-- STATE -->
+      <label>State</label>
+      <select name="state" onchange="submitRefresh()">
+        {% for s in states %}
+          <option value="{{ s }}" {% if s==selected_state %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+      </select>
+
+      <!-- DISTRICT -->
+      <label>District</label>
+      <select name="district" onchange="submitRefresh()">
+        {% for d in districts %}
+          <option value="{{ d }}" {% if d==selected_district %}selected{% endif %}>{{ d }}</option>
+        {% endfor %}
+      </select>
+
+      <!-- SEASON -->
+      <label>Season</label>
+      <select name="season" onchange="submitRefresh()">
+        {% for s in seasons %}
+          <option value="{{ s }}" {% if s==selected_season %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+      </select>
+
+      <!-- INPUTS -->
+      <label>N</label>
+      <input name="N" value="{{ defaults['N'] }}">
+
+      <label>P</label>
+      <input name="P" value="{{ defaults['P'] }}">
+
+      <label>K</label>
+      <input name="K" value="{{ defaults['K'] }}">
+
+      <label>Temperature (°C)</label>
+      <input name="temperature" value="{{ defaults['temperature'] }}">
+
+      <label>Humidity (%)</label>
+      <input name="humidity" value="{{ defaults['humidity'] }}">
+
+      <label>pH</label>
+      <input name="ph" value="{{ defaults['ph'] }}">
+
+      <label>Rainfall (mm)</label>
+      <input name="rainfall" value="{{ defaults['rainfall'] }}">
+
+      <label>Farm size (ha)</label>
+      <input name="farm_size" value="{{ farm_size if farm_size else '' }}" placeholder="1">
+
+      <!-- ACTION -->
+      <input type="hidden" name="action" id="actionInput" value="">
+
+      <!-- BUTTONS -->
+      <button type="button" onclick="submitPredict()">Predict Best Crops</button>
+
+    </form>
+  </div>
+
+  <br>
+
+  <!-- CHART -->
+  {% if plot_data %}
+    <h2>Profit Comparison</h2>
+    <img src="data:image/png;base64,{{ plot_data }}" style="max-width:100%;border-radius:12px">
+  {% endif %}
+
+  <!-- RESULTS -->
+  <h2>Recommended Crops</h2>
+  {% if recommended %}
+    <ul class="result-list">
+      {% for c in recommended %}
+        <li>{{ c }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p style="color:var(--muted)">Run prediction to see recommendations.</p>
+  {% endif %}
+
+</div>
+
+<script>
+function submitPredict() {
+  document.getElementById("actionInput").value = "predict";
+  document.getElementById("loaderOverlay").style.display = "flex";
+  document.getElementById("predictForm").submit();
+}
+
+function submitRefresh() {
+  document.getElementById("actionInput").value = "refresh";
+  document.getElementById("predictForm").submit();
+}
+</script>
+
+</body>
+</html>
